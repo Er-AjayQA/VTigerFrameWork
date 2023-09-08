@@ -7,8 +7,20 @@ package com.VtigerFrameWork.GenericUtilities;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class WebDriverUtility {
+	
+	/**
+	 * This method is to open the given url in browser.
+	 * @param driver
+	 * @param url
+	 */
+	public void openGivenUrl(WebDriver driver, String url)
+	{
+		driver.get(url);
+	}
 
 	/**
 	 * This method is to maximize the browser.
@@ -28,4 +40,16 @@ public class WebDriverUtility {
 	{
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeInSec));
 	}
+	
+	/**
+	 * This method is to hover the mouse cursor over any webPage element.
+	 * @param driver
+	 * @param element
+	 */
+	public void mouseHoverOnElement(WebDriver driver, WebElement element)
+	{
+		Actions act= new Actions(driver);
+		act.moveToElement(element).perform();
+	}
+	
 }
