@@ -1,7 +1,6 @@
 package com.VtigerFrameWork.GenericUtilities;
 
 import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,10 +9,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
 import com.VtigetFrameWork.ObectRepository.HomePage;
 import com.VtigetFrameWork.ObectRepository.LoginPage;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClassUtility {
@@ -52,7 +49,7 @@ public class BaseClassUtility {
 		
 		wUtil.implicitWait(driver, 10);
 		wUtil.windowMaximize(driver);
-		driver.get("vTigerUrl");
+		wUtil.openGivenUrl(driver, vTigerUrl);
 	}
 	
 	@BeforeMethod
