@@ -11,6 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import com.VtigetFrameWork.ObectRepository.HomePage;
 import com.VtigetFrameWork.ObectRepository.LoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -59,11 +60,9 @@ public class BaseClassUtility {
 	{
 		String userName= pUtil.readDataFromPropertyFile("UserName");
 		String password= pUtil.readDataFromPropertyFile("Password");
-		String expectedTitle= pUtil.readDataFromPropertyFile("HomePageTitle");
-		
+		String expectedTitle= pUtil.readDataFromPropertyFile("HomePageTitle");		
 		LoginPage lp= new LoginPage(driver);
-		lp.loginToVtigerApplication(userName, password);
-		
+		lp.loginToVtigerApplication(userName, password);		
 		lp.validateLogin(driver, expectedTitle);
 	}
 	
@@ -74,8 +73,11 @@ public class BaseClassUtility {
 	}
 	
 	@AfterMethod
-	public void afterMethod()
+	public void afterMethod() throws IOException
 	{
-		
+		String expectedTitle= pUtil.readDataFromPropertyFile("LoginPageTitle");		
+		HomePage hp= new HomePage(driver);
+		hp.logoutFromVtigerApp(driver);
+		hp.validateLogout(driver, expectedTitle);
 	}
 }
